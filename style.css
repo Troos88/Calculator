@@ -1,0 +1,93 @@
+body
+{
+    display: flex;
+    justify-content: center;
+    padding-top: 100px;
+}
+
+h1
+{
+    color: whitesmoke;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.unit
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 600px;
+    height: 750px;
+    background-color: green;
+    border: 2px solid rgb(2, 50, 0);
+    border-radius: 25px;
+    box-shadow: 0px -20px 20px 5px rgb(0, 40, 4);
+}
+
+.display
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: azure;
+    border: 1px solid black;
+    box-shadow: 0px -2px 4px 0px inset;
+    border-radius: 8px;
+    width: 500px;
+    height: 100px;
+    text-align: center;
+    letter-spacing: 5px;
+    font-size: 3vw;
+    line-height: 200%;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    
+    
+    
+}
+
+#displaytext
+{
+    margin: 0;
+}
+
+button
+{
+    box-shadow: 0px -4px 1px 1px;
+    border-radius: 10px;
+    font-size: 150%;
+}
+
+.buttons
+{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.operations button
+{
+    width: 90px;
+    height: 50px;
+    margin-top: 50px;
+}
+
+.digits
+{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    padding-top: 40px;
+    padding-left: 60px;
+    padding-right: 60px;
+}
+
+.digits button
+{
+    width: 120px;
+    height: 80px;
+}
+
+
