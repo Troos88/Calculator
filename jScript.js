@@ -2,6 +2,7 @@ const digits = document.querySelectorAll('#digit');
 const operators = document.querySelectorAll('#operator');
 const equalBtn = document.getElementById('equal');
 const clearBtn = document.getElementById('clear');
+const decimalBtn = document.getElementById('decimal');
 const display = document.getElementById('displaytext');
 
 let number1 = 0;
@@ -17,7 +18,17 @@ digits.forEach(button => button.addEventListener('click', operate));
 operators.forEach(button => button.addEventListener('click', addOperator));
 equalBtn.addEventListener('click', calculate);
 clearBtn.addEventListener('click', clear);
+decimalBtn.addEventListener('click', addDecimal);
 
+
+function addDecimal()
+{
+    if(!temp.includes('.'))
+    {
+        temp += this.value;
+        display.textContent += this.value;
+    }
+}
 
 function addOperator() {
 

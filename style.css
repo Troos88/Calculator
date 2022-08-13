@@ -90,7 +90,13 @@ button
 .digits button
 {
     width: 120px;
-    height: 80px;
+    height: 60px;
+}
+
+#equal
+{
+    grid-row-start: 4;
+    grid-column-end: 4;
 }
 
 
