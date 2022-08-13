@@ -4,12 +4,12 @@ const equalBtn = document.getElementById('equal');
 const clearBtn = document.getElementById('clear');
 const decimalBtn = document.getElementById('decimal');
 const backBtn = document.getElementById('back');
-const powerBtn = document.getElementById('power');
+const powerBtn = document.getElementById('powerBtn');
 const display = document.getElementById('displaytext');
 
 let powerOn = true;
-let number1 = 0;
-let number2 = 0;
+let number1 = NaN;
+let number2 = NaN;
 let temp = '';
 let operation1 = '';
 let operation2 = '';
@@ -19,6 +19,7 @@ let firstOperation = true;
 digits.forEach(button => button.addEventListener('click', operate));
 //All operators(+,-,*,/)
 operators.forEach(button => button.addEventListener('click', addOperator));
+
 powerBtn.addEventListener('click', powerOnOff);
 equalBtn.addEventListener('click', calculate);
 clearBtn.addEventListener('click', clear);
@@ -34,62 +35,99 @@ function powerOnOff()
     if(powerOn)
     {
         display.parentElement.setAttribute('id', 'powerOn');
+        document.querySelectorAll('button').forEach(button => {
+            if(button !== powerBtn)
+            {
+                button.disabled = false;
+            }
+        });
     }
     else
     {    
         clear();
         display.parentElement.removeAttribute('id', 'powerOn');
+        document.querySelectorAll('button').forEach(button => {
+            if(button !== powerBtn)
+            {
+                button.disabled = true;
+            }
+        });
+    }
+    
+}
+
+function deleteLast()
+{
+    if(display.textContent == number1)
+    {
+        number1 = display.textContent.slice(0, -1);
+        display.textContent = number1;
+    }
+    else
+    {
+        temp = temp.slice(0, -1);
+        display.textContent = display.textContent.slice(0, -1);
     }
     
 }
 
 function addDecimal()
 {
-    if(!temp.includes('.'))
+    if(!temp.includes('.') && !temp.length == 0)
     {
         temp += this.value;
         display.textContent += this.value;
     }
 }
 
-function addOperator() {
-
-    if(firstOperation)
+function addOperator() 
+{
+    if(display.textContent.includes(operation1) && operation1 != '')
+    {
+        return;
+    }
+    if(number1 != 0 || display.textContent.includes(operators.forEach(button => button.value)))
+    {
+        if(temp == '')
+        {
+            operation1 = this.value;
+            display.textContent += this.value;
+        }
+        else
+        {
+            calculate();
+            operation1 = this.value;
+            display.textContent += this.value;
+        }
+        
+    }
+    if(temp != '' && number1 == 0)
     {
         operation1 = this.value;
         number1 = Number(temp);
         temp = '';
-        firstOperation = false;
+        display.textContent += this.value;
     }
-    else
-    {
-        operation2 = this.value;
-        
-        if(temp) calculate();
-        
-        operation1 = operation2;
-        operation2 = '';
-    }
-
-    display.textContent += this.value;
+    
 }
 
-function deleteLast()
+
+function operate() 
 {
-    temp = temp.slice(0, -1);
-    display.textContent = temp;
-}
-
-function operate() {
 
 if(display.textContent == '0') display.textContent = '';
+if(operation1 == '' && number1 != 0)
+{
+    clear();
+}
 
 if(number1 == Infinity)
 {
-    firstOperation = true;
     number1 = 0;
     display.textContent = '';
 }
+
+
     display.textContent += this.value;
     temp += this.value;
 
@@ -101,14 +139,16 @@ function clear() {
     number2 = 0;
     operation1 = '';
     operation2 = '';
-    firstOperation = true;
     display.textContent = '';
 }
 
-function calculate() {
+function calculate() 
+{
 
-    number2 = Number(temp);
-    temp = '';
+if(temp == '') return;
+
+number2 = Number(temp);
+temp = '';
 
     switch (operation1) {
         case '+':
@@ -129,8 +169,8 @@ function calculate() {
             break;
     }
 
-    operation1 = '';
     number2 = 0;
+    operation1 = '';
 
 }
 

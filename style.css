@@ -7,7 +7,7 @@ body
 
 h1
 {
-    color: whitesmoke;
+    color: rgb(52, 39, 0);
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     
 }
@@ -19,10 +19,10 @@ h1
     align-items: center;
     width: 600px;
     height: 750px;
-    background-color: rgb(0, 103, 0);
-    border: 2px solid rgb(2, 50, 0);
+    background-color: rgb(227,178,97);
+    border: 2px solid rgb(155, 120, 64);
     border-radius: 25px;
-    box-shadow: 0px -20px 20px 5px rgb(0, 40, 4);
+    box-shadow: 0px -20px 20px 5px rgb(78, 62, 9);
 }
 
 .head
@@ -44,7 +44,7 @@ h1
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: rgb(12, 12, 12);
+    background-color: rgb(39, 39, 39);
     border: 1px solid black;
     box-shadow: 0px -2px 4px 0px inset;
     border-radius: 8px;
@@ -53,17 +53,20 @@ h1
     text-align: center;
     letter-spacing: 5px;
     font-size: 48px;
+    font-weight: 300;
     line-height: 200%;
     word-wrap: break-word;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
+    transition: 2s;
     
 }
 
 #powerOn
 {
-   background-color: rgb(198, 247, 247)
+   background-color: rgb(198, 247, 247);
+   transition: 2s;
 }
 
 #displaytext
@@ -77,8 +80,16 @@ button
     box-shadow: 0px -4px 1px 1px;
     border-radius: 10px;
     font-size: 150%;
-    background-color: rgb(167, 166, 165);
+    background-color: rgb(212, 212, 212);
+    color: rgb(43, 43, 43);
     
+}
+
+button:disabled
+{
+    background-color: rgb(212, 212, 212);
+    color: rgb(43, 43, 43);
+    border-color: buttonborder;
 }
 
 .buttons
@@ -126,7 +137,7 @@ button
     grid-column-end: 4;
 }
 
-#power
+#powerBtn
 {
     width: 30px;
     height: 30px;
