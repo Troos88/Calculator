@@ -18,7 +18,7 @@ h1
     align-items: center;
     width: 600px;
     height: 750px;
-    background-color: green;
+    background-color: rgb(0, 103, 0);
     border: 2px solid rgb(2, 50, 0);
     border-radius: 25px;
     box-shadow: 0px -20px 20px 5px rgb(0, 40, 4);
@@ -29,7 +29,7 @@ h1
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: azure;
+    background-color: rgb(198, 247, 247);
     border: 1px solid black;
     box-shadow: 0px -2px 4px 0px inset;
     border-radius: 8px;
@@ -53,11 +53,13 @@ h1
     margin: 0;
 }
 
+
 button
 {
     box-shadow: 0px -4px 1px 1px;
     border-radius: 10px;
     font-size: 150%;
+    background-color: rgb(167, 166, 165);
 }
 
 .buttons
@@ -65,6 +67,7 @@ button
     display: flex;
     flex-direction: column;
     align-items: center;
+    
 }
 
 .operations button
