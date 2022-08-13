@@ -3,8 +3,11 @@ const operators = document.querySelectorAll('#operator');
 const equalBtn = document.getElementById('equal');
 const clearBtn = document.getElementById('clear');
 const decimalBtn = document.getElementById('decimal');
+const backBtn = document.getElementById('back');
+const powerBtn = document.getElementById('power');
 const display = document.getElementById('displaytext');
 
+let powerOn = true;
 let number1 = 0;
 let number2 = 0;
 let temp = '';
@@ -16,10 +19,29 @@ let firstOperation = true;
 digits.forEach(button => button.addEventListener('click', operate));
 //All operators(+,-,*,/)
 operators.forEach(button => button.addEventListener('click', addOperator));
+powerBtn.addEventListener('click', powerOnOff);
 equalBtn.addEventListener('click', calculate);
 clearBtn.addEventListener('click', clear);
+backBtn.addEventListener('click', deleteLast);
 decimalBtn.addEventListener('click', addDecimal);
 
+powerOnOff();
+
+function powerOnOff()
+{
+    powerOn = !powerOn;
+    
+    if(powerOn)
+    {
+        display.parentElement.setAttribute('id', 'powerOn');
+    }
+    else
+    {    
+        clear();
+        display.parentElement.removeAttribute('id', 'powerOn');
+    }
+    
+}
 
 function addDecimal()
 {
@@ -52,6 +74,12 @@ function addOperator() {
     display.textContent += this.value;
 }
 
+function deleteLast()
+{
+    temp = temp.slice(0, -1);
+    display.textContent = temp;
+}
+
 function operate() {
 
 if(display.textContent == '0') display.textContent = '';
@@ -74,7 +102,7 @@ function clear() {
     operation1 = '';
     operation2 = '';
     firstOperation = true;
-    display.textContent = '0';
+    display.textContent = '';
 }
 
 function calculate() {

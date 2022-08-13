@@ -9,6 +9,7 @@ h1
 {
     color: whitesmoke;
     font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    
 }
 
 .unit
@@ -24,12 +25,26 @@ h1
     box-shadow: 0px -20px 20px 5px rgb(0, 40, 4);
 }
 
+.head
+{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.head-side
+{
+    display: flex;
+    width: 10%;
+    justify-content: center;
+}
+
 .display
 {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    background-color: rgb(198, 247, 247);
+    background-color: rgb(12, 12, 12);
     border: 1px solid black;
     box-shadow: 0px -2px 4px 0px inset;
     border-radius: 8px;
@@ -37,15 +52,18 @@ h1
     height: 100px;
     text-align: center;
     letter-spacing: 5px;
-    font-size: 3vw;
+    font-size: 48px;
     line-height: 200%;
     word-wrap: break-word;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
     
-    
-    
+}
+
+#powerOn
+{
+   background-color: rgb(198, 247, 247)
 }
 
 #displaytext
@@ -60,6 +78,7 @@ button
     border-radius: 10px;
     font-size: 150%;
     background-color: rgb(167, 166, 165);
+    
 }
 
 .buttons
@@ -72,24 +91,26 @@ button
 
 .operations button
 {
-    width: 90px;
+    width: 102px;
     height: 50px;
     margin-top: 50px;
+    margin-left: 3px;
+    margin-right: 3px;
 }
 
 .digits
 {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
     padding-top: 40px;
     padding-left: 60px;
     padding-right: 60px;
+    gap: 10px;
 }
 
 .digits button
 {
-    width: 120px;
+    width: 140px;
     height: 60px;
 }
 
@@ -97,6 +118,26 @@ button
 {
     grid-row-start: 4;
     grid-column-end: 4;
+}
+
+#back
+{
+    grid-row-start: 5;
+    grid-column-end: 4;
+}
+
+#power
+{
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    margin: 20px 20px 0px 0px;
+    padding: 0;
+    border: 1px;
+    box-shadow: 0px -1px 1px 1px;
+    background-color: brown;
+    
+    
 }
 
 

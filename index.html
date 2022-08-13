@@ -7,12 +7,21 @@
     <title>TOP Calculator</title>
     <link rel="stylesheet" href="style.css">
     <script src="jScript.js" defer></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <body>
     <div class="unit">
-        <h1>TOP Calculator</h1>
+        <div class="head">
+            <div class="head-side">
+                <img src="TOP.png" height="50px" width="50px" style="padding-left: 220px; padding-top: 15px;">
+            </div>
+            <h1>TOP Calculator</h1>
+            <div class="head-side">
+                <button id="power"><i style="font-size:24px" class="fa">&#xf011;</i></button>
+            </div>
+        </div>
         <div class="display">
-            <p id="displaytext">0</p>
+            <p id="displaytext"></p>
         </div>
         <div class="buttons">
             <div class="operations">
@@ -35,6 +44,7 @@
                 <button id="clear" value='C'>C</button>
                 <button id="decimal" value='.'>.</button>
                 <button id="equal" value='='>=</button>
+                <button id="back" value='B'>Back</button>
             </div>
     
         </div>
