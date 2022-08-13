@@ -140,4 +140,10 @@ button
     
 }
 
+#logo
+{
+    grid-row-start: 5;
+    grid-column-end: 3;
+    
+}
 
