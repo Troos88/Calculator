@@ -16,9 +16,9 @@ let operation2 = '';
 let firstOperation = true;
 
 //All digits
-digits.forEach(button => button.addEventListener('click', operate));
+digits.forEach(button => button.addEventListener('click', operate(button.value)));
 //All operators(+,-,*,/)
-operators.forEach(button => button.addEventListener('click', addOperator));
+operators.forEach(button => button.addEventListener('click', addOperator(button.value)));
 
 powerBtn.addEventListener('click', powerOnOff);
 equalBtn.addEventListener('click', calculate);
@@ -26,6 +26,80 @@ clearBtn.addEventListener('click', clear);
 backBtn.addEventListener('click', deleteLast);
 decimalBtn.addEventListener('click', addDecimal);
 
+//Keyboard support
+document.addEventListener('keydown', (event) => {
+
+    const keyName = event.key;
+
+    if(keyName == 'Escape') powerOnOff();
+
+    if(powerOn)
+    {
+            switch(keyName)
+            {
+                case '0':
+                    operate(keyName);
+                    break;
+                case '1':
+                    operate(keyName);
+                    break;
+                case '2':
+                    operate(keyName);
+                    break;
+                case '3':
+                    operate(keyName);
+                    break;
+                case '4':
+                    operate(keyName);
+                    break;
+                case '5':
+                    operate(keyName);
+                    break;
+                case '6':
+                    operate(keyName);
+                    break;
+                case '7':
+                    operate(keyName);
+                    break;
+                case '8':
+                    operate(keyName);
+                    break;
+                case '9':
+                    operate(keyName);
+                    break;
+                case 'Enter':
+                    equalBtn.focus();
+                    calculate();
+                    break;
+                case '.':
+                    addDecimal();
+                    break;
+                case 'Backspace':
+                    deleteLast();
+                    break;
+                case 'Delete':
+                    clear();
+                    break;
+                case '+':
+                    addOperator(keyName);
+                    break;
+                case '-':
+                    addOperator(keyName);
+                    break;
+                case '*':
+                    addOperator(keyName);
+                    break;
+                case '/':
+                    addOperator(keyName);
+                    break;
+                    
+            }
+    }
+
+
+});
+
+//Start at power off
 powerOnOff();
 
 function powerOnOff()
@@ -56,11 +130,12 @@ function powerOnOff()
     
 }
 
+//Delete last typed digit
 function deleteLast()
 {
     if(display.textContent == number1)
     {
-        number1 = display.textContent.slice(0, -1);
+        number1 = Number(display.textContent.slice(0, -1));
         display.textContent = number1;
     }
     else
@@ -75,44 +150,41 @@ function addDecimal()
 {
     if(!temp.includes('.') && !temp.length == 0)
     {
-        temp += this.value;
-        display.textContent += this.value;
+        temp += '.';
+        display.textContent += '.';
     }
 }
 
-function addOperator() 
-{
-    if(display.textContent.includes(operation1) && operation1 != '')
-    {
-        return;
-    }
+//Sets what operator to use in calculation
+function addOperator(operator) 
+{   
     if(number1 != 0 || display.textContent.includes(operators.forEach(button => button.value)))
     {
         if(temp == '')
         {
-            operation1 = this.value;
-            display.textContent += this.value;
+            operation1 = operator;
+            display.textContent += operator;
         }
         else
         {
             calculate();
-            operation1 = this.value;
-            display.textContent += this.value;
+            operation1 = operator;
+            display.textContent += operator;
         }
         
     }
     if(temp != '' && number1 == 0)
     {
-        operation1 = this.value;
+        operation1 = operator;
         number1 = Number(temp);
         temp = '';
-        display.textContent += this.value;
+        display.textContent += operator;
     }
     
 }
 
-
-function operate() 
+//Only digits
+function operate(input) 
 {
 
 if(display.textContent == '0') display.textContent = '';
@@ -128,11 +200,12 @@ if(number1 == Infinity)
 }
 
 
-    display.textContent += this.value;
-    temp += this.value;
-
+    display.textContent += input;
+    temp += input;
+    
 }
 
+//Clear everything
 function clear() {
     temp = '';
     number1 = 0;
@@ -142,6 +215,7 @@ function clear() {
     display.textContent = '';
 }
 
+//Makes calculation
 function calculate() 
 {
 
@@ -174,19 +248,22 @@ temp = '';
 
 }
 
-function multiply(num1, num2) {
+function multiply(num1, num2) 
+{
     return Math.round((num1 * num2) * 10) / 10;
 }
 
-function substract(num1, num2) {
+function substract(num1, num2) 
+{
     return Math.round((num1 - num2) * 10) / 10;
 }
 
-function divide(num1, num2) {
+function divide(num1, num2) 
+{
     return Math.round((num1 / num2) * 10) / 10;
 }
 
-function add(num1, num2) {
+function add(num1, num2) 
+{
     return Math.round((num1 + num2) * 10) / 10;
-
 }
