@@ -16,15 +16,18 @@ let operation2 = '';
 let firstOperation = true;
 
 //All digits
-digits.forEach(button => button.addEventListener('click', operate(button.value)));
+digits.forEach(digit => digit.addEventListener('click', digit => operate(digit.target.value)));
 //All operators(+,-,*,/)
-operators.forEach(button => button.addEventListener('click', addOperator(button.value)));
+operators.forEach(button => button.addEventListener('click', button => addOperator(button.target.value)));
 
 powerBtn.addEventListener('click', powerOnOff);
 equalBtn.addEventListener('click', calculate);
 clearBtn.addEventListener('click', clear);
 backBtn.addEventListener('click', deleteLast);
 decimalBtn.addEventListener('click', addDecimal);
+
+//Start at power off
+powerOnOff();
 
 //Keyboard support
 document.addEventListener('keydown', (event) => {
@@ -99,9 +102,6 @@ document.addEventListener('keydown', (event) => {
 
 });
 
-//Start at power off
-powerOnOff();
-
 function powerOnOff()
 {
     powerOn = !powerOn;
@@ -133,7 +133,7 @@ function powerOnOff()
 //Delete last typed digit
 function deleteLast()
 {
-    if(display.textContent == number1)
+    if(display.textContent == number1 && display.textContent != '')
     {
         number1 = Number(display.textContent.slice(0, -1));
         display.textContent = number1;
@@ -155,7 +155,7 @@ function addDecimal()
     }
 }
 
-//Sets what operator to use in calculation
+//Set the operator to use in calculation
 function addOperator(operator) 
 {   
     if(number1 != 0 || display.textContent.includes(operators.forEach(button => button.value)))
@@ -186,7 +186,6 @@ function addOperator(operator)
 //Only digits
 function operate(input) 
 {
-
 if(display.textContent == '0') display.textContent = '';
 if(operation1 == '' && number1 != 0)
 {
@@ -198,6 +197,7 @@ if(number1 == Infinity)
     number1 = 0;
     display.textContent = '';
 }
+
 
 
     display.textContent += input;
