@@ -69,10 +69,17 @@ h1
     
 }
 
-p
+.footer
 {
-    padding-top: 24px;
+    text-align: center;
+    padding-bottom: 25px;
+}
+
+#displaytext 
+{
+    height: 60px;
     padding-left: 10px;
+    padding-bottom: 10px;
     letter-spacing: 5px;
     text-align: center;
     font-size: 32px;
@@ -83,10 +90,16 @@ p
     overflow: hidden;
 }
 
-.footer
+#last-calculation
 {
-    text-align: center;
-    padding-bottom: 25px;
+    height: 20px;
+    margin: 0;
+    padding-left: 10px;
+    padding-top: 10px;
+    word-wrap: break-word;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 #powerOn

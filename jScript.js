@@ -6,13 +6,13 @@ const decimalBtn = document.getElementById('decimal');
 const backBtn = document.getElementById('back');
 const powerBtn = document.getElementById('powerBtn');
 const display = document.getElementById('displaytext');
+const lastOp = document.getElementById('last-calculation');
 
 let powerOn = true;
 let number1 = NaN;
 let number2 = NaN;
 let temp = '';
-let operation1 = '';
-let operation2 = '';
+let operation = '';
 let firstOperation = true;
 
 //All digits
@@ -162,20 +162,20 @@ function addOperator(operator)
     {
         if(temp == '')
         {
-            operation1 = operator;
+            operation = operator;
             display.textContent += operator;
         }
         else
         {
             calculate();
-            operation1 = operator;
+            operation = operator;
             display.textContent += operator;
         }
         
     }
     if(temp != '' && number1 == 0)
     {
-        operation1 = operator;
+        operation = operator;
         number1 = Number(temp);
         temp = '';
         display.textContent += operator;
@@ -187,7 +187,7 @@ function addOperator(operator)
 function operate(input) 
 {
 if(display.textContent == '0') display.textContent = '';
-if(operation1 == '' && number1 != 0)
+if(operation == '' && number1 != 0)
 {
     clear();
 }
@@ -210,9 +210,9 @@ function clear() {
     temp = '';
     number1 = 0;
     number2 = 0;
-    operation1 = '';
-    operation2 = '';
+    operation = '';
     display.textContent = '';
+    lastOp.textContent = '';
 }
 
 //Makes calculation
@@ -224,27 +224,31 @@ if(temp == '') return;
 number2 = Number(temp);
 temp = '';
 
-    switch (operation1) {
+    switch (operation) {
         case '+':
+            lastOp.textContent = number1 + ' + ' + number2 + ' =';
             number1 = add(number1, number2);
             display.textContent = number1;
             break;
         case '-':
+            lastOp.textContent = number1 + ' - ' + number2 + ' =';
             number1 = substract(number1, number2);
             display.textContent = number1;
             break;
         case '*':
+            lastOp.textContent = number1 + ' * ' + number2 + ' =';
             number1 = multiply(number1, number2);
             display.textContent = number1;
             break;
         case '/':
+            lastOp.textContent = number1 + ' / ' + number2 + ' =';
             number1 = divide(number1, number2);
             display.textContent = number1;
             break;
     }
 
     number2 = 0;
-    operation1 = '';
+    operation = '';
 
 }
 
